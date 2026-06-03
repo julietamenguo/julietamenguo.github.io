@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>julieta menguó</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --negro: #0a0a0a;
+    --azul: #1a2a4a;
+    --azul-mid: #2c4a7a;
+    --azul-claro: #4a7ab5;
+    --crema: #e8e0d0;
+    --crema-oscuro: #c8bfaf;
+    --rojo: #8b2020;
+    --blanco: #f5f0e8;
+    --gris: #666055;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--crema);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.75;
+    cursor: default;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 3rem;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--crema-oscuro);
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--crema-oscuro);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    opacity: 0.7;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--crema); }
+
+  /* HERO */
+  #inicio {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(26, 42, 74, 0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 70%, rgba(139, 32, 32, 0.15) 0%, transparent 60%),
+      var(--negro);
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--blanco);
+    margin-bottom: 1rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--crema-oscuro);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--crema-oscuro);
+    max-width: 480px;
+    margin-bottom: 3rem;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--negro);
+    background: var(--crema);
+    padding: 0.9rem 2rem;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: var(--blanco);
+  }
+
+  .btn-ghost {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--crema-oscuro);
+    border-bottom: 1px solid rgba(200,191,175,0.3);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--crema);
+    border-color: rgba(200,191,175,0.7);
+  }
+
+  /* SECCIONES */
+  section {
+    padding: 7rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--blanco);
+    margin-bottom: 2.5rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--crema-oscuro);
+  }
+
+  /* DIVISOR */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200,191,175,0.15), transparent);
+    margin: 0;
+  }
+
+  /* BIO */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .bio-text p {
+    margin-bottom: 1.5rem;
+    color: var(--crema-oscuro);
+    font-size: 1.05rem;
+  }
+
+  .bio-text p strong {
+    color: var(--crema);
+    font-weight: 400;
+  }
+
+  .bio-aside {
+    padding-top: 1rem;
+  }
+
+  .bio-aside h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+
+  .proyectos-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .proyecto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(200,191,175,0.08);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .proyecto-item:hover {
+    border-color: rgba(74,122,181,0.3);
+    background: rgba(26,42,74,0.15);
+  }
+
+  .proyecto-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--azul-claro);
+    opacity: 0.6;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .proyecto-info strong {
+    display: block;
+    font-style: italic;
+    color: var(--crema);
+    font-weight: 300;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .proyecto-info span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gris);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* DISCOGRAFÍA */
+  #discografia {
+    background: rgba(26,42,74,0.08);
+    max-width: none;
+    padding: 7rem 0;
+  }
+
+  #discografia .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .discos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-top: 3rem;
+  }
+
+  .disco-card {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: rgba(26,42,74,0.3);
+    cursor: pointer;
+  }
+
+  .disco-card-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 60%);
+    transition: background 0.4s;
+  }
+
+  .disco-card:hover .disco-card-inner {
+    background: linear-gradient(to top, rgba(10,10,10,0.97) 0%, rgba(26,42,74,0.4) 100%);
+  }
+
+  .disco-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--azul-claro);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .disco-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--blanco);
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+
+  .disco-format {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--crema-oscuro);
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  .disco-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7rem;
+    opacity: 0.04;
+    user-select: none;
+  }
+
+  .disco-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s;
+  }
+
+  .disco-card:hover .disco-links {
+    max-height: 60px;
+  }
+
+  .disco-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--crema);
+    border: 1px solid rgba(200,191,175,0.3);
+    padding: 0.35rem 0.8rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .disco-link:hover {
+    border-color: rgba(200,191,175,0.7);
+    background: rgba(200,191,175,0.1);
+  }
+
+  /* OBRA INSTRUMENTAL */
+  .obra-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(200,191,175,0.05);
+    margin-top: 3rem;
+  }
+
+  .obra-item {
+    background: var(--negro);
+    padding: 2.5rem;
+    border: 1px solid rgba(200,191,175,0.06);
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+  }
+
+  .obra-item:hover {
+    border-color: rgba(200,191,175,0.15);
+    background: rgba(26,42,74,0.12);
+  }
+
+  .obra-fecha {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--azul-claro);
+    opacity: 0.7;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .obra-nombre {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--crema);
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .obra-desc {
+    font-size: 0.9rem;
+    color: var(--gris);
+    line-height: 1.6;
+  }
+
+  .obra-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    border: 1px solid rgba(74,122,181,0.25);
+    padding: 0.25rem 0.7rem;
+    opacity: 0.7;
+  }
+
+  /* FORMACIÓN */
+  .formacion-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .formacion-bloque h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    opacity: 0.7;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(200,191,175,0.08);
+  }
+
+  .formacion-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  .formacion-año {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gris);
+    min-width: 60px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .formacion-texto strong {
+    display: block;
+    color: var(--crema);
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .formacion-texto span {
+    font-size: 0.85rem;
+    color: var(--gris);
+    font-style: italic;
+  }
+
+  /* CONTACTO */
+  #contacto {
+    background: rgba(26,42,74,0.1);
+    max-width: none;
+    padding: 7rem 0;
+  }
+
+  #contacto .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contacto-info p {
+    color: var(--crema-oscuro);
+    font-size: 1.05rem;
+    font-style: italic;
+    margin-bottom: 3rem;
+    max-width: 400px;
+  }
+
+  .contacto-datos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contacto-datos li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contacto-datos .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris);
+    min-width: 80px;
+  }
+
+  .contacto-datos a, .contacto-datos span {
+    color: var(--crema);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .contacto-datos a:hover { color: var(--azul-claro); }
+
+  .redes {
+    margin-top: 3rem;
+  }
+
+  .redes h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .redes-links {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .red-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--crema-oscuro);
+    border: 1px solid rgba(200,191,175,0.2);
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s;
+  }
+
+  .red-link:hover {
+    border-color: rgba(200,191,175,0.5);
+    color: var(--crema);
+    background: rgba(200,191,175,0.05);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(200,191,175,0.06);
+  }
+
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gris);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  /* ANIMACIONES DE ENTRADA */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.62rem; }
+
+    #inicio { padding: 0 1.5rem 4rem; }
+    section { padding: 5rem 1.5rem; }
+    #discografia .inner, #contacto .inner { padding: 0 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+
+    .bio-grid, .formacion-cols, #contacto .inner { grid-template-columns: 1fr; gap: 3rem; }
+    .obra-grid { grid-template-columns: 1fr; }
+    .discos-grid { grid-template-columns: 1fr 1fr; }
+
+    h1 { font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#inicio" class="nav-logo">julieta menguó</a>
+  <ul class="nav-links">
+    <li><a href="#bio">Bio</a></li>
+    <li><a href="#discografia">Discos</a></li>
+    <li><a href="#obra">Obra</a></li>
+    <li><a href="#formacion">Formación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content fade-in">
+    <p class="hero-tag">compositora · productora · intérprete</p>
+    <h1>julieta<br><em>menguó</em></h1>
+    <p class="hero-sub">Córdoba, Argentina. Experimentación sonora, canción y música de cámara.</p>
+    <div class="hero-ctas">
+      <a href="#discografia" class="btn-primary">Escuchar</a>
+      <a href="#bio" class="btn-ghost">Conocer más</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BIO -->
+<section id="bio">
+  <div class="section-tag">Acerca de</div>
+  <div class="bio-grid">
+    <div class="bio-text fade-in">
+      <p><strong>Julieta Scianca</strong> es una artista argentina nacida en Villa Carlos Paz, actualmente residente en Córdoba. Productora y compositora de canciones, obras para diversas formaciones y música experimental, se encuentra detrás de la producción de toda su música.</p>
+      <p>Sus influencias artísticas son diversas: música de tradición escrita y electroacústica, rock alternativo y trip/hop conviven en un universo sonoro personal y minucioso.</p>
+      <p>Su proyecto solista <em>julieta menguó</em> nace en 2019 como espacio de expresión más allá de las cuatro paredes de su habitación. El trabajo desde este proyecto propone un abordaje compositivo en el que coexisten la experimentación sonora y la canción. Su segundo álbum, <em>errante</em> (2025), es una invitación a detenerse y escuchar atentamente cada sonido.</p>
+    </div>
+    <div class="bio-aside fade-in">
+      <h3>Proyectos actuales</h3>
+      <ul class="proyectos-list">
+        <li class="proyecto-item">
+          <span class="proyecto-num">01</span>
+          <div class="proyecto-info">
+            <strong>julieta menguó</strong>
+            <span>Proyecto solista · canciones</span>
+          </div>
+        </li>
+        <li class="proyecto-item">
+          <span class="proyecto-num">02</span>
+          <div class="proyecto-info">
+            <strong>Gota Pedal</strong>
+            <span>Proyecto colaborativo</span>
+          </div>
+        </li>
+        <li class="proyecto-item">
+          <span class="proyecto-num">03</span>
+          <div class="proyecto-info">
+            <strong>Lola y Las Lolastristes</strong>
+            <span>Proyecto colaborativo</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DISCOGRAFÍA -->
+<div id="discografia">
+  <div class="inner">
+    <div class="section-tag fade-in">Discografía</div>
+    <h2 class="fade-in"><em>julieta menguó</em></h2>
+    <div class="discos-grid fade-in">
+
+      <div class="disco-card">
+        <div class="disco-bg">◈</div>
+        <div class="disco-card-inner">
+          <div class="disco-year">2025</div>
+          <div class="disco-title">errante</div>
+          <div class="disco-format">Álbum de larga duración</div>
+          <div class="disco-links">
+            <a href="https://open.spotify.com/artist/julietamenguo" class="disco-link" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://www.youtube.com/@julietascianca" class="disco-link" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disco-card">
+        <div class="disco-bg">◇</div>
+        <div class="disco-card-inner">
+          <div class="disco-year">2024</div>
+          <div class="disco-title">invisible ft. Gota Pedal</div>
+          <div class="disco-format">Single · Adelanto</div>
+          <div class="disco-links">
+            <a href="https://open.spotify.com/artist/julietamenguo" class="disco-link" target="_blank" rel="noopener">Spotify</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disco-card">
+        <div class="disco-bg">○</div>
+        <div class="disco-card-inner">
+          <div class="disco-year">2020</div>
+          <div class="disco-title">la materia pesa</div>
+          <div class="disco-format">EP</div>
+          <div class="disco-links">
+            <a href="https://open.spotify.com/artist/julietamenguo" class="disco-link" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://soundcloud.com/julietascianca" class="disco-link" target="_blank" rel="noopener">Soundcloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disco-card">
+        <div class="disco-bg">◉</div>
+        <div class="disco-card-inner" style="background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(26,42,74,0.2) 100%);">
+          <div class="disco-year">2025</div>
+          <div class="disco-title">gota pedal</div>
+          <div class="disco-format">Álbum · Proyecto colaborativo</div>
+          <div class="disco-links">
+            <a href="https://open.spotify.com/artist/gotapedal" class="disco-link" target="_blank" rel="noopener">Spotify</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- OBRA INSTRUMENTAL / ELECTROACÚSTICA -->
+<section id="obra">
+  <div class="section-tag fade-in">Obra</div>
+  <h2 class="fade-in">Música instrumental<br><em>y electroacústica</em></h2>
+  <div class="obra-grid fade-in">
+
+    <div class="obra-item">
+      <div class="obra-fecha">2025</div>
+      <div class="obra-nombre">Canción Desfigurada</div>
+      <p class="obra-desc">Para acordeón y voz procesados. Obra electroacústica estrenada en 2025.</p>
+      <span class="obra-tag">Electroacústica</span>
+    </div>
+
+    <div class="obra-item">
+      <div class="obra-fecha">2022</div>
+      <div class="obra-nombre">El Diluvio</div>
+      <p class="obra-desc">Escrita para la Big Band "Eleva". Presentada en el Festival Internacional de Jazz CBA Jazz 2022.</p>
+      <span class="obra-tag">Big Band</span>
+    </div>
+
+    <div class="obra-item">
+      <div class="obra-fecha">2022</div>
+      <div class="obra-nombre">Tótem</div>
+      <p class="obra-desc">Composición colectiva dentro del proyecto "Lontano" radicado en el CEPIA, Universidad Nacional de Córdoba.</p>
+      <span class="obra-tag">Composición colectiva</span>
+    </div>
+
+    <div class="obra-item">
+      <div class="obra-fecha">2021</div>
+      <div class="obra-nombre">Máscaras</div>
+      <p class="obra-desc">Cuarteto de cuerdas interpretado por el Cuarteto de la UNTREF en las VI Jornadas de lectura abierta de cuartetos de cuerdas.</p>
+      <span class="obra-tag">Cuarteto de cuerdas</span>
+    </div>
+
+    <div class="obra-item">
+      <div class="obra-fecha">2018</div>
+      <div class="obra-nombre">Tríptico</div>
+      <p class="obra-desc">Obras experimentales en vivo presentadas en Piso Quinto, Córdoba Capital.</p>
+      <span class="obra-tag">Experimental</span>
+    </div>
+
+    <div class="obra-item" style="display: flex; align-items: center; justify-content: center; min-height: 180px;">
+      <div style="text-align: center;">
+        <p style="font-style: italic; color: var(--gris); font-size: 0.9rem; margin-bottom: 1rem;">Material disponible en</p>
+        <a href="https://soundcloud.com/julietascianca" class="btn-ghost" target="_blank" rel="noopener">SoundCloud →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FORMACIÓN -->
+<section id="formacion">
+  <div class="section-tag fade-in">Trayectoria</div>
+  <h2 class="fade-in">Formación<br><em>y docencia</em></h2>
+  <div class="formacion-cols fade-in">
+
+    <div class="formacion-bloque">
+      <h3>Estudios y capacitación</h3>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2025</div>
+        <div class="formacion-texto">
+          <strong>Seminario de posgrado — Las vanguardias sonoras</strong>
+          <span>Universidad Nacional de las Artes · Prof. Susana Espinosa · 36 hs.</span>
+        </div>
+      </div>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2023</div>
+        <div class="formacion-texto">
+          <strong>Taller de Sonido en Vivo</strong>
+          <span>Red TEMID — Trabajadorxs de artes escénicas y espectáculos en vivo</span>
+        </div>
+      </div>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2023</div>
+        <div class="formacion-texto">
+          <strong>La armonía en la música de Claude Debussy</strong>
+          <span>Universidad Nacional de las Artes · 8 hs.</span>
+        </div>
+      </div>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2022</div>
+        <div class="formacion-texto">
+          <strong>El Otro Piano — taller</strong>
+          <span>Ana Foutel · Conservatorio Félix Garzón, Córdoba</span>
+        </div>
+      </div>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2018–22</div>
+        <div class="formacion-texto">
+          <strong>Técnica en Composición, Arreglos y Producción</strong>
+          <span>La Colmena Escuela de Músicos</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="formacion-bloque">
+      <h3>Docencia</h3>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2024</div>
+        <div class="formacion-texto">
+          <strong>Clases de producción musical</strong>
+          <span>Actividad independiente</span>
+        </div>
+      </div>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2022–hoy</div>
+        <div class="formacion-texto">
+          <strong>Apreciación Musical · Taller de Composición</strong>
+          <span>La Colmena Escuela de Músicos · Ciclo introductorio — Composición, Arreglos y Producción</span>
+        </div>
+      </div>
+
+      <div class="formacion-item">
+        <div class="formacion-año">2020–22</div>
+        <div class="formacion-texto">
+          <strong>Taller autogestivo de guitarra y producción musical</strong>
+          <span>Actividad independiente</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACTO -->
+<div id="contacto">
+  <div class="inner">
+    <div class="contacto-info fade-in">
+      <div class="section-tag">Contacto</div>
+      <h2>Escribir<br><em>es bienvenido</em></h2>
+      <p>Para shows, prensa, colaboraciones o cualquier consulta sobre su obra.</p>
+      <ul class="contacto-datos">
+        <li>
+          <span class="label">Email</span>
+          <a href="mailto:julietamenguo@gmail.com">julietamenguo@gmail.com</a>
+        </li>
+        <li>
+          <span class="label">Teléfono</span>
+          <a href="tel:+543541601824">+54 3541 601824</a>
+        </li>
+        <li>
+          <span class="label">Ciudad</span>
+          <span>Córdoba, Argentina</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="redes fade-in">
+      <h3>Plataformas</h3>
+      <div class="redes-links">
+        <a href="https://www.instagram.com/julietamenguo" class="red-link" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://open.spotify.com/artist/julietamenguo" class="red-link" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://www.youtube.com/@julietascianca" class="red-link" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://soundcloud.com/julietascianca" class="red-link" target="_blank" rel="noopener">SoundCloud</a>
+      </div>
+      <div style="margin-top: 4rem; padding: 2rem; border: 1px solid rgba(200,191,175,0.08);">
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-bottom: 1rem;">Prensa · Material digital</p>
+        <p style="font-size: 0.9rem; color: var(--crema-oscuro); font-style: italic; line-height: 1.6;">Fotos de prensa, presskit completo y material de alta resolución disponibles bajo consulta.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 julieta menguó — Julieta Scianca</span>
+  <span>Córdoba, Argentina</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelector('.hero-content').classList.add('visible');
+</script>
+
+</body>
+</html>
